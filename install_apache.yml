@@ -4,12 +4,12 @@
   become: yes
   tasks:
 
-  - name: update repository index
+  - name: update repository index for three distributions
     shell: yum makecache # equivalently run the 'apt-get update', it only downloads the index files
     when: ansible_distribution in ["Debian", "Ubuntu", "CentOS"]
 
 
-  - name: install the latest version of Apache package
+  - name: install the latest version of Apache package, only for CentOS_7.9
     yum:
       name: httpd
       state: latest
